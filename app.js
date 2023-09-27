@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 9705
 const userRoute = require('./routes/signIn')
 const ejs = require('ejs')
 const expressEjsLayouts = require('express-ejs-layouts')
+const dbConnect = require('./services/dbConnect')
 const app = express()
 
 
@@ -27,6 +28,7 @@ app.use(express.urlencoded({extended:false}))
 app.get('/',userRoute)
 const startServer=async()=>{
     try {
+        await dbConnect.authenticate()
         app.listen(PORT,()=>{
             console.log(`server has running on http://localhost:${PORT}`)
         })
