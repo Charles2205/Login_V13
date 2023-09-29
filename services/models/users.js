@@ -24,5 +24,5 @@ const user = dbConnect.define('users',{
         allowNull:false
     }
 })
-user.sync({force:true})
+user.sync({alter:true})
 module.exports = user

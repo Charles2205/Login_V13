@@ -25,8 +25,11 @@ app.use(express.urlencoded({extended:false}))
 
 
 
-app.get('/',userRoute)
-app.post('/signUp',userRoute)
+app.use('/',userRoute)
+
+
+
+
 
 const startServer=async()=>{
     try {
