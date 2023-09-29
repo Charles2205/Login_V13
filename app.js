@@ -1,7 +1,7 @@
 const express = require('express')
 require('dotenv').config()
 const PORT = process.env.PORT || 9705
-const userRoute = require('./routes/signIn')
+const userRoute = require('./routes/user')
 const ejs = require('ejs')
 const expressEjsLayouts = require('express-ejs-layouts')
 const dbConnect = require('./services/dbConnect')
