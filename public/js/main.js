@@ -7,3 +7,40 @@ return check;});$('.validate-form .input100').each(function(){$(this).focus(func
 else{if($(input).val().trim()==''){return false;}}}
 function showValidate(input){var thisAlert=$(input).parent();$(thisAlert).addClass('alert-validate');}
 function hideValidate(input){var thisAlert=$(input).parent();$(thisAlert).removeClass('alert-validate');}})(jQuery);
+
+
+
+    document.querySelector('.login100-form-btn').addEventListener('click', () => {
+      Swal.fire({
+        title: 'Hello from SweetAlert!',
+        text: 'This is a SweetAlert integration with Node.js.',
+        icon: 'success',
+      });
+    });
+    try {
+        const response = await fetch('/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `username=${username}&password=${password}`,
+        });
+  
+        if (response.ok) {
+          // Sign-up was successful
+          Swal.fire({
+            title: 'Success!',
+            text: 'Sign-up was successful.',
+            icon: 'success',
+          });
+        } else {
+          // Sign-up failed
+          Swal.fire({
+            title: 'Error!',
+            text: 'Sign-up failed. Please try again.',
+            icon: 'error',
+          });
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }

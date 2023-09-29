@@ -26,6 +26,8 @@ app.use(express.urlencoded({extended:false}))
 
 
 app.get('/',userRoute)
+app.post('/signUp',userRoute)
+
 const startServer=async()=>{
     try {
         await dbConnect.authenticate()
