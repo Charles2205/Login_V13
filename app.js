@@ -5,14 +5,14 @@ const userRoute = require('./routes/user')
 const ejs = require('ejs')
 const expressEjsLayouts = require('express-ejs-layouts')
 const dbConnect = require('./services/dbConnect')
+const { default: helmet } = require('helmet')
 const app = express()
 
-
+app.use(helmet())
 
 app.set('view engine','ejs')
-app.set('layout',__dirname+'/views/layout') 
-app.set('views',__dirname+'/views/pages')
-
+app.set('views',__dirname+'/views/pages') 
+app.set('layout',__dirname+'/views/layout')
 
 
 

@@ -7,10 +7,6 @@ const user = dbConnect.define('users',{
         primaryKey:true,
         autoIncrement:true,
     },
-    full_name:{
-        type:DataTypes.STRING,
-        allowNull:false,
-    },
     email:{
         type:DataTypes.STRING,
         allowNull:false
