@@ -34,8 +34,7 @@ const signIn = async(req,res)=>{
          }
         //  req.session.user =results.id
      
-        //  res.send('Logged in Successfully  🎉 🎊')
-        res.redirect('/home')
+         res.redirect('/home')
         //  console.log(req.session)
        
      } catch (error) {

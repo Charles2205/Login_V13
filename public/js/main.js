@@ -55,3 +55,52 @@
     
 
 })(jQuery);
+
+
+async function signIn(user_name, password) {
+    try {
+      const response = await fetch('/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user_name, password }),
+      });
+  
+      if (!response.ok) {
+        // Display an error message using SweetAlert if the sign-in fails
+        const data = await response.json();
+        Swal.fire({
+          icon: 'error',
+          title: 'Sign-in Failed',
+          text: data.message || 'Something went wrong during sign-in.',
+        });
+        return;
+      }
+  
+      const data = await response.json();
+      // Handle a successful sign-in response (e.g., store authentication token)
+      console.log(data);
+  
+      // Display a success message using SweetAlert
+      Swal.fire({
+        icon: 'success',
+        title: 'Sign-in Successful',
+        text: 'You have successfully signed in!',
+      });
+    } catch (error) {
+      // Handle any errors that occurred during the fetch
+      console.error('Fetch error:', error);
+  
+      // Display a generic error message using SweetAlert
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An error occurred while processing your request.',
+      });
+    }
+  }
+  
+  // Call the signIn function with username and password
+  signIn('your_username', 'your_password');
+  
