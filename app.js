@@ -5,7 +5,10 @@ const userRoute = require('./routes/user')
 const ejs = require('ejs')
 const expressEjsLayouts = require('express-ejs-layouts')
 const dbConnect = require('./services/dbConnect')
+const expressSession = require('express-session')
+const APP_SECRET = process.env.APP_SECRET
 const { default: helmet } = require('helmet')
+
 const app = express()
 
 app.use(helmet())
@@ -22,7 +25,12 @@ app.use(expressEjsLayouts)
 app.use(express.urlencoded({extended:false}))
 
 
-
+app.use(expressSession({
+    secret: APP_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie:{}
+}))
 
 
 app.use('/',userRoute)

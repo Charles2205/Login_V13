@@ -1,4 +1,5 @@
 const dbModel = require('../services/models/users')
+
 const bcrypt = require('bcrypt')
 
 const viewPage =(req,res)=>{
@@ -32,10 +33,10 @@ const signIn = async(req,res)=>{
          if(!isCorrectPassword){
             return res.send('Invaild Credentials 😒')
          }
-        //  req.session.user =results.id
+          req.session.user =results.id
      
          res.redirect('/home')
-        //  console.log(req.session)
+          console.log(req.session.user)
        
      } catch (error) {
         console.log(error);
@@ -50,8 +51,16 @@ const viewSignIn =(req,res)=>{
 const signUpPage=(req,res)=>{
     res.render('signUp')
 }
-const home=(req,res)=>{
-    res.render('home')
+const home=async(req,res)=>{
+        try {
+           const userId = req.session.user
+           const userInfo = await dbModel.findOne({where:{id:userId}})
+        //    res.send(`Welcome ${userInfo.user_name}`)
+        const data = userInfo.user_name
+        res.render('home',{data})
+        } catch (error) {
+            console.log(error);
+        } 
 }
 module.exports={
     viewPage,
