@@ -4,8 +4,8 @@ const dbConnect = require('../dbConnect')
 const user = dbConnect.define('users',{
     id:{
         type:DataTypes.INTEGER,
-        primaryKey:true,
         autoIncrement:true,
+        primaryKey:true,
     },
     email:{
         type:DataTypes.STRING,

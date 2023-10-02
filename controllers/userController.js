@@ -12,7 +12,7 @@ const signUp= async (req,res)=>{
     try {
         const {full_name,email,user_name,password}=req.body
         const hashPassword = await bcrypt.hash(password,10)
-        const results =  await  dbModel.create({full_name,email,user_name,"password":hashPassword})
+        await  dbModel.create({full_name,email,user_name,"password":hashPassword})
         res.redirect('/success')
     } catch (error) {
         console.log(error);

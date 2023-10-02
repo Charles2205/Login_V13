@@ -83,7 +83,7 @@ async function signIn(user_name, password) {
       console.log(data);
   
       // Display a success message using SweetAlert
-      Swal.fire({
+      Swal.fire({ 
         icon: 'success',
         title: 'Sign-in Successful',
         text: 'You have successfully signed in!',
